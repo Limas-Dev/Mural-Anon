@@ -1,2 +1,3 @@
 # Mural-Anon
-Este projeto é uma aplicação web baseada em Flask que permite a criação de murais de feedback anônimo. Pensada para empresas, escolas ou eventos, a plataforma permite que usuários enviem opiniões de forma segura, sem precisar se identificar duma forma a qual não existem rastros que liguem o feedback ao user.
+ Este projeto é uma aplicação web desenvolvida com o microframework *Flask*, projetada para a criação e gerenciamento de murais de feedback anônimo. Ideal para ambientes corporativos, educacionais ou eventos institucionais, a plataforma permite que participantes enviem opiniões, críticas ou sugestões de forma totalmente confidencial.
+ A arquitetura do sistema foi concebida com foco na privacidade e no anonimato, garantindo que não haja qualquer vínculo rastreável entre os feedbacks submetidos e os usuários que os enviaram. Nenhum dado de identificação é coletado ou armazenado, assegurando um canal verdadeiramente seguro e livre de exposição.
