@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Criar Mural</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🟣 Criar Mural de Feedback</h1>
+    <form method="POST" action="/create">
+      <input type="text" name="titulo" placeholder="Título do mural" required />
+      <button type="submit">Criar Mural</button>
+      <!-- Pode desconsiderar isso, é só um incentivo á mim como dev :) -->
+      <a
+        class="btn-doar"
+        onclick="copiarPix()"
+        style="color: #ff5555; font-weight: bold; text-decoration: none"
+      >
+        ❤️ Apoie o Desenvolvedor
+      </a>
+    </form>
+  </div>
+  <script>
+    function copiarPix() {
+      const chavePix = "f27ca2d1-4cc5-4a3a-b939-2a018750e5fc";
+      navigator.clipboard.writeText(chavePix).then(
+        function () {
+          alert(
+            "Obrigado por se interessar❤️ Sou um desenvolvedor iniciante, então isso é muito gratificante😄\n\nMinha chave Pix foi copiada para sua área de transferência:\n" +
+              chavePix
+          );
+        },
+        function (err) {
+          alert("Oops! Algo deu errado ao copiar a chave Pix. 😢");
+        }
+      );
+    }
+  </script>
+</body>
+</html>

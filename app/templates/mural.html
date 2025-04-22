@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mural {{ mural_id }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style2.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>{{ titulo }}</h1>
+
+      <form method="POST" action="/send/{{ mural_id }}">
+        <textarea
+          name="feedback"
+          placeholder="Digite seu feedback..."
+          required
+        ></textarea>
+        <button type="submit">Enviar Anônimo</button>
+      </form>
+
+      <hr style="margin: 30px 0; border-color: #333" />
+
+      <div class="button-row">
+        <form
+          action="{{ url_for('main.exportar_mural', mural_id=mural_id) }}"
+          method="get"
+        >
+          <button class="btn-exportar" type="submit">Exportar Mural</button>
+        </form>
+
+        <form
+          method="POST"
+          action="{{ url_for('main.delete_mural', mural_id=mural_id) }}"
+        >
+          <button
+            class="btn-encerrar"
+            type="submit"
+            onclick="return confirm('Tem certeza que deseja encerrar este mural? Esta ação é irreversível.')"
+          >
+            Encerrar Mural
+          </button>
+        </form>
+      </div>
+
+      <hr style="margin: 30px 0; border-color: #333" />
+
+      {% if feedbacks %}
+      <h2 style="color: #888; font-size: 18px">Feedbacks recebidos:</h2>
+      <div id="feedbacks">
+        {% for f in feedbacks|reverse %}
+        <div class="feedback-box">{{ f.texto }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Pode desconsiderar isso, é só um incentivo á mim como dev :) -->
+      <a
+        class="btn-doar"
+        onclick="copiarPix()"
+        style="color: #ff5555; font-weight: bold; text-decoration: none"
+      >
+        ❤️ Apoie o Desenvolvedor
+      </a>
+    </div>
+
+    <script>
+      function copiarPix() {
+        const chavePix = "f27ca2d1-4cc5-4a3a-b939-2a018750e5fc";
+        navigator.clipboard.writeText(chavePix).then(
+          function () {
+            alert(
+              "Obrigado por se interessar❤️ Sou um desenvolvedor iniciante, então isso é muito gratificante😄\n\nMinha chave Pix foi copiada para sua área de transferência:\n" +
+                chavePix
+            );
+          },
+          function (err) {
+            alert("Oops! Algo deu errado ao copiar a chave Pix. 😢");
+          }
+        );
+      }
+    </script>
+
+  </body>
+</html>
